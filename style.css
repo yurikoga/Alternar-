@@ -1,0 +1,96 @@
+body {
+    background-color: white; /* Cor de fundo branca do corpo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* O switch - o container ao redor do slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 240px; /* Largura total do interruptor */
+    height: 120px; /* Altura total do interruptor */
+}
+
+/* Ocultar a caixa de seleção padrão */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* O slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1; /* Cor cinza claro (desativado/unlocked) de image_8.png */
+    transition: .4s;
+    border-radius: 60px; /* Arredondamento dos cantos */
+}
+
+/* O círculo deslizante (knob) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 100px; /* Tamanho do círculo */
+    width: 100px;
+    left: 10px; /* Posicionamento interno */
+    bottom: 10px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Torna-o um círculo */
+    z-index: 2; /* Garante que o círculo fique acima da cor de fundo */
+}
+
+/* Ícones de cadeado */
+.slider i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    transition: .4s;
+    z-index: 3; /* Ícones acima do círculo */
+}
+
+/* Cadeado aberto (estado inicial/unlocked) */
+.icon-unlocked {
+    left: 35px; /* Posição à esquerda */
+    color: #a0a0a0; /* Cor cinza do cadeado aberto de image_8.png */
+}
+
+/* Cadeado fechado (estado ativado/locked) */
+.icon-locked {
+    right: 35px; /* Posição à direita */
+    color: white; /* Cor branca do cadeado fechado dentro do círculo roxo */
+    opacity: 0; /* Começa invisível */
+}
+
+/* Estado Ativado (Checkbox Marcado) */
+input:checked + .slider {
+    background-color: #8A2BE2; /* Roxo vibrante (ativado/locked) de image_9.png */
+}
+
+input:checked + .slider:before {
+    transform: translateX(120px); /* Move o círculo para a direita */
+}
+
+/* Alternar visibilidade dos ícones */
+input:checked + .slider .icon-unlocked {
+    opacity: 0; /* Esconde o cadeado aberto */
+}
+
+input:checked + .slider .icon-locked {
+    opacity: 1; /* Mostra o cadeado fechado */
+}
